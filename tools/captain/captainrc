@@ -1,7 +1,3 @@
-# This file contains the configuration for the run.sh script. It follows the
-# Bash syntax and is sourced by the script to access the variables. Variables
-# are mandatory unless marked with [brackets].
-
 ###
 ## Configuration parameters
 ###
@@ -10,7 +6,7 @@
 WORKDIR=./workdir
 
 # REPEAT: number of campaigns to run per program (per fuzzer)
-REPEAT=3
+REPEAT=1
 
 # [WORKER_MODE]: defines the type of CPU resources to allocate (default: 1)
 # - 1: logical cores (possibly SMT-enabled)
@@ -19,7 +15,7 @@ REPEAT=3
 # WORKER_MODE=1
 
 # [WORKERS]: number of worker threads (default: all cores)
-# WORKERS=3
+WORKERS=20
 
 # [WORKER_POOL]: a space-separated list of logical cores to allocate
 # WORKER_POOL="1 3 5 7 9"
@@ -56,7 +52,7 @@ POLL=5
 # CANARY_MODE=3
 
 # [ISAN]: if set, build the benchmark with ISAN/fatal canaries (default: unset)
-# ISAN=1
+ISAN=1
 
 # [HARDEN]: if set, build the benchmark with hardened canaries (default: unset)
 # HARDEN=1
@@ -71,17 +67,18 @@ POLL=5
 ###
 
 # FUZZERS: an array of fuzzer names (from magma/fuzzers/*) to evaluate
-FUZZERS=(afl aflfast moptafl aflplusplus fairfuzz honggfuzz)
+FUZZERS=(aflplusplus)
 
 # [fuzzer_TARGETS]: an array of target names (from magma/targets/*) to fuzz with
 # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
 # (default: all targets)
-# afl_TARGETS=(libpng libtiff libxml2)
+aflplusplus_TARGETS=(libtiff poppler)
 
 # [fuzzer_target_PROGRAMS]: an array of program names (from
 # magma/targets/target/configrc) to use as execution drivers when fuzzing the
 # `target`
-# afl_libtiff_PROGRAMS=(tiffcp)
+aflplusplus_libtiff_PROGRAMS=(tiff_read_rgba_fuzzer tiffcp)
+aflplusplus_poppler_PROGRAMS=(pdf_fuzzer pdfimages pdftoppm)
 
 # [fuzzer_target_FUZZARGS]: a string containing fuzzer/target-specific arguments
 # when fuzzing `target` with `fuzzer`

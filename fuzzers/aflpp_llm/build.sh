@@ -18,6 +18,6 @@ export AFL_NO_X86=1
 export PYTHON_INCLUDE=/
 make -j$(nproc) || exit 1
 make -C utils/aflpp_driver || exit 1
-# make -j ./custom_mutators/aflpp
+make -C "$FUZZER/repo/custom_mutators/aflpp/"
 
 mkdir -p "$OUT/afl" "$OUT/cmplog"

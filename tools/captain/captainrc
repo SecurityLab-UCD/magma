@@ -12,16 +12,16 @@ REPEAT=1
 # - 1: logical cores (possibly SMT-enabled)
 # - 2: physical cores
 # - 3: physical sockets (1 worker per CPU socket)
-# WORKER_MODE=1
+WORKER_MODE=1
 
 # [WORKERS]: number of worker threads (default: all cores)
-WORKERS=20
+# WORKERS=30
 
 # [WORKER_POOL]: a space-separated list of logical cores to allocate
-# WORKER_POOL="1 3 5 7 9"
+# WORKER_POOL="40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61"
 
 # [CAMPAIGN_WORKERS]: number of workers to allocate for a campaign (default: 1)
-# CAMPAIGN_WORKERS=1
+CAMPAIGN_WORKERS=30
 
 # [TIMEOUT]: time to run each campaign. This variable supports one-letter
 # suffixes to indicate duration (s: seconds, m: minutes, h: hours, d: days)
@@ -67,18 +67,17 @@ ISAN=1
 ###
 
 # FUZZERS: an array of fuzzer names (from magma/fuzzers/*) to evaluate
-FUZZERS=(aflplusplus)
+FUZZERS=(aflpp_llm)
 
 # [fuzzer_TARGETS]: an array of target names (from magma/targets/*) to fuzz with
 # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
 # (default: all targets)
-aflplusplus_TARGETS=(libtiff poppler)
+aflpp_llm_TARGETS=(libpng)
 
 # [fuzzer_target_PROGRAMS]: an array of program names (from
 # magma/targets/target/configrc) to use as execution drivers when fuzzing the
-# `target`
-aflplusplus_libtiff_PROGRAMS=(tiff_read_rgba_fuzzer tiffcp)
-aflplusplus_poppler_PROGRAMS=(pdf_fuzzer pdfimages pdftoppm)
+# `target` tiff_read_rgba_fuzzer 
+# aflplusplus_openssl_PROGRAMS=(asn1 asn1parse bignum bndiv client cms conf crl ct server x509)
 
 # [fuzzer_target_FUZZARGS]: a string containing fuzzer/target-specific arguments
 # when fuzzing `target` with `fuzzer`

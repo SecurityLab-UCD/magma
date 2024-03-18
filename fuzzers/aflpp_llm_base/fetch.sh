@@ -7,4 +7,4 @@ set -e
 ##
 
 git clone https://github.com/SecurityLab-UCD/AFLplusplus.git "$FUZZER/repo"
-git -c advice.detachedHead=false -C "$FUZZER/repo"  checkout a8d85a52c95b2dabe329fcf7cebee93824a5feb3
+git -c advice.detachedHead=false -C "$FUZZER/repo"  checkout 6be80c64718875174d124c4ce7ff2752c55caeb8

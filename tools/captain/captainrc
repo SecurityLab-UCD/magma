@@ -15,10 +15,9 @@ REPEAT=1
 WORKER_MODE=1
 
 # [WORKERS]: number of worker threads (default: all cores)
-# WORKERS=30
 
 # [WORKER_POOL]: a space-separated list of logical cores to allocate
-# WORKER_POOL="40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61"
+# WORKER_POOL="0 1 2 3 6 7 9 11 13 14 15 16 18 19 20 31 32 33 34 35 36 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 59 61 62 63 64 65 66 67 68 69 70 72 73 74 75 77 78 79"
 
 # [CAMPAIGN_WORKERS]: number of workers to allocate for a campaign (default: 1)
 CAMPAIGN_WORKERS=30
@@ -66,18 +65,26 @@ ISAN=1
 ## Campaigns to run
 ###
 
-# FUZZERS: an array of fuzzer names (from magma/fuzzers/*) to evaluate
+# FUZZERS: an array of fuzzer names (from magma/fuzzers/*) to evaluate 
+# aflpp_llm honggfuzz
 FUZZERS=(aflpp_llm)
 
 # [fuzzer_TARGETS]: an array of target names (from magma/targets/*) to fuzz with
 # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
-# (default: all targets)
-aflpp_llm_TARGETS=(libpng)
+# (default: all targets) libpng libsndfile libtiff libxml2 lua openssl php poppler sqlite3
+aflpp_llm_TARGETS=(libxml2)
 
 # [fuzzer_target_PROGRAMS]: an array of program names (from
 # magma/targets/target/configrc) to use as execution drivers when fuzzing the
 # `target` tiff_read_rgba_fuzzer 
-# aflplusplus_openssl_PROGRAMS=(asn1 asn1parse bignum bndiv client cms conf crl ct server x509)
+aflpp_llm_libxml2_PROGRAMS=(libxml2_xml_read_memory_fuzzer)
+# aflplusplus_libpng_PROGRAMS=(libpng_read_fuzzer)
+# aflplusplus_libtiff_PROGRAMS=(tiff_read_rgba_fuzzer tiffcp)
+# aflplusplus_libxml2_PROGRAMS=(libxml2_xml_read_memory_fuzzer xmllint)
+# aflplusplus_openssl_PROGRAMS=(asn1 asn1parse bignum server client x509)
+# aflplusplus_php_PROGRAMS=(json exif unserialize parser)
+# aflplusplus_poppler_PROGRAMS=(pdf_fuzzer pdfimages pdftoppm)
+# aflplusplus_sqlite3_PROGRAMS=(sqlite3_fuzz)
 
 # [fuzzer_target_FUZZARGS]: a string containing fuzzer/target-specific arguments
 # when fuzzing `target` with `fuzzer`

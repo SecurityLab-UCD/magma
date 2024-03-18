@@ -24,10 +24,12 @@ export AFL_NO_AFFINITY=1
 export AFL_NO_UI=1
 export AFL_MAP_SIZE=16777216
 # export AFL_DRIVER_DONT_DEFER=1
-export AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
+# export AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
 export AFL_CUSTOM_MUTATOR_LIBRARY="$FUZZER/repo/custom_mutators/aflpp/aflpp-mutator.so"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-11.8/lib64"
-accelerate launch --mixed_precision fp16 "$FUZZER/repo/structureLLM/llama2_mutator.py" --fuzzing_target 'libtiff' &
+export AFL_KILL_SIGNAL=9
+# --fuzzing_object 'bignum'
+accelerate launch --mixed_precision fp16 "$FUZZER/repo/structureLLM/llama2_mutator.py" --fuzzing_target 'libxml' --if_text True &
 
 sleep 240 && "$FUZZER/repo/afl-fuzz" -i "$TARGET/corpus/$PROGRAM" -o "$SHARED/findings" \
     "${flag_cmplog[@]}" -d \

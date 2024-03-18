@@ -3,7 +3,7 @@ set -e
 
 apt-get update && \
     apt-get install -y make clang-9 llvm-9-dev libc++-9-dev libc++abi-9-dev \
-        build-essential git wget gcc-7-plugin-dev liblzma-dev
+        build-essential git wget gcc-7-plugin-dev liblzma-dev bzip2
 # set timezone
 ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
 apt update && apt upgrade -y # Install python3.10 reliance
@@ -16,7 +16,6 @@ cd Python-3.10.0
 # make -j $(nproc)
 make altinstall
 apt install -y software-properties-common
-# apt-get install -y python3-pip python3-dev python3-setuptools
 wget https://bootstrap.pypa.io/get-pip.py
 python3.10 get-pip.py
 

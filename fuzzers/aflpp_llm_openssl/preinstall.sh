@@ -3,8 +3,7 @@ set -e
 
 apt-get update && \
     apt-get install -y make clang-9 llvm-9-dev libc++-9-dev libc++abi-9-dev \
-        build-essential git wget gcc-7-plugin-dev liblzma-dev bzip2 vim
-
+        build-essential git wget gcc-7-plugin-dev liblzma-dev bzip2
 # set timezone
 ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
 apt update && apt upgrade -y # Install python3.10 reliance
@@ -30,7 +29,7 @@ pip3.10 install trl==0.7.2
 pip3.10 install tyro
 pip3.10 install typing
 pip3.10 install sysv-ipc
-pip3.10 install bitsandbytes
+pip3.10 install bitsandbytes==0.41.1
 
 wget https://raw.githubusercontent.com/TimDettmers/bitsandbytes/main/install_cuda.sh
 bash install_cuda.sh 118 /usr/local

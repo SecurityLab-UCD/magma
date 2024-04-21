@@ -16,8 +16,8 @@ export AS="llvm-as"
 
 export LIBS="$LIBS -lc++ -lc++abi $FUZZER/repo/utils/aflpp_driver/libAFLDriver.a"
 
-# AFL++'s driver is compiled against libc++
-export CXXFLAGS="$CXXFLAGS -stdlib=libc++ -L /usr/lib -l bz2"
+# AFL++'s driver is compiled against libc++  -L /usr/lib -l bz2
+export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
 
 # Build the AFL-only instrumented version
 (
@@ -44,3 +44,4 @@ export CXXFLAGS="$CXXFLAGS -stdlib=libc++ -L /usr/lib -l bz2"
 # NOTE: We pass $OUT directly to the target build.sh script, since the artifact
 #       itself is the fuzz target. In the case of Angora, we might need to
 #       replace $OUT by $OUT/fast and $OUT/track, for instance.
+accelerate launch --mixed_precision fp16 "$FUZZER/repo/structureLLM/download_model.py"

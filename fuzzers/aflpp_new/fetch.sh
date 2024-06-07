@@ -6,4 +6,4 @@ set -e
 # - env FUZZER: path to fuzzer work dir
 ##
 
-# ADD your AFL++ and structureLLM repo
+# ADD your AFL++
